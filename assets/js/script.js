@@ -113,6 +113,44 @@ function typeLoop() {
 }
 typeLoop();
 
+// ===================== Demo modal =====================
+const demoModal = document.getElementById('demoModal');
+const demoModalFrame = document.getElementById('demoModalFrame');
+const demoModalTitle = document.getElementById('demoModalTitle');
+const demoModalClose = document.getElementById('demoModalClose');
+
+function openDemoModal(url, title) {
+  demoModalTitle.textContent = title || 'Canlı Demo';
+  demoModalFrame.src = url;
+  demoModal.classList.add('open');
+  demoModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDemoModal() {
+  demoModal.classList.remove('open');
+  demoModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  demoModalFrame.src = 'about:blank';
+}
+
+document.querySelectorAll('[data-demo-url]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    openDemoModal(btn.getAttribute('data-demo-url'), btn.getAttribute('data-demo-title'));
+  });
+});
+
+demoModalClose.addEventListener('click', closeDemoModal);
+demoModal.addEventListener('click', (e) => {
+  if (e.target === demoModal) closeDemoModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && demoModal.classList.contains('open')) closeDemoModal();
+});
+window.addEventListener('message', (e) => {
+  if (e.data === 'close-demo-modal') closeDemoModal();
+});
+
 // ===================== Back to top =====================
 const toTopBtn = document.getElementById('toTop');
 toTopBtn.style.opacity = '0';

@@ -293,7 +293,7 @@
           <h3>Volcano-GIS</h3>
           <p>Dünya genelindeki volkanları haritalayan, etki alanı ve risk analizi yapan CBS uygulaması.</p>
           <div class="project-links">
-            <a href="projects/volcano-gis/index.html" class="project-link-demo">🟢 Canlı Demo</a>
+            <button type="button" class="project-link-demo" data-demo-url="projects/volcano-gis/index.html" data-demo-title="Volcano-GIS">🟢 Canlı Demo</button>
             <a href="https://github.com/hdrklc/Volcano-GIS" target="_blank" rel="noopener" class="project-link-code">Kaynak Kod</a>
           </div>
         </div>
@@ -306,7 +306,7 @@
           <h3>Anlık Deprem Haritası</h3>
           <p>Güncel deprem verilerini harita üzerinde gerçek zamanlı gösteren web uygulaması.</p>
           <div class="project-links">
-            <a href="projects/deprem-haritasi/index.html" class="project-link-demo">🟢 Canlı Demo</a>
+            <button type="button" class="project-link-demo" data-demo-url="projects/deprem-haritasi/index.html" data-demo-title="Anlık Deprem Haritası">🟢 Canlı Demo</button>
             <a href="https://github.com/hdrklc/Anl-k-Deprem-Haritas-" target="_blank" rel="noopener" class="project-link-code">Kaynak Kod</a>
           </div>
         </div>
@@ -421,6 +421,16 @@
   </section>
 
 </main>
+
+<div class="demo-modal" id="demoModal" aria-hidden="true">
+  <div class="demo-modal-inner">
+    <div class="demo-modal-bar">
+      <span id="demoModalTitle">Canlı Demo</span>
+      <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Kapat">✕ Kapat</button>
+    </div>
+    <iframe id="demoModalFrame" title="Proje canlı demo" loading="lazy" allow="geolocation; notifications"></iframe>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="container footer-inner">

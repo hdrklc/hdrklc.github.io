@@ -633,6 +633,77 @@ img { max-width: 100%; display: block; }
 .contact-card h3 { font-size: 0.96rem; margin-bottom: 3px; }
 .contact-card p { color: var(--text-dim); font-size: 0.88rem; word-break: break-word; }
 
+/* ===================== Demo Modal ===================== */
+.demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(4, 8, 14, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.demo-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.demo-modal-inner {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  max-height: 860px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transform: scale(0.97);
+  transition: transform 0.25s ease;
+}
+.demo-modal.open .demo-modal-inner {
+  transform: scale(1);
+}
+.demo-modal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+.demo-modal-close {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+.demo-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+.demo-modal-inner iframe {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: #fff;
+}
+
+@media (max-width: 720px) {
+  .demo-modal { padding: 0; }
+  .demo-modal-inner { max-width: 100%; max-height: 100%; border-radius: 0; }
+}
+
 /* ===================== Footer ===================== */
 .site-footer { border-top: 1px solid var(--border); padding: 26px 0; }
 .footer-inner {
