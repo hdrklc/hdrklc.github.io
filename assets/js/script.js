@@ -35,6 +35,31 @@ document.querySelectorAll('[data-nav]').forEach(link => {
   });
 });
 
+// ===================== Demo nav dropdown =====================
+const demoNavDropdown = document.querySelector('.nav-dropdown');
+const demoNavTrigger = document.getElementById('demoNavTrigger');
+
+if (demoNavDropdown && demoNavTrigger) {
+  demoNavTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    demoNavDropdown.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!demoNavDropdown.contains(e.target)) {
+      demoNavDropdown.classList.remove('open');
+    }
+  });
+
+  demoNavDropdown.querySelectorAll('[data-demo-url]').forEach(item => {
+    item.addEventListener('click', () => {
+      demoNavDropdown.classList.remove('open');
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+
 // ===================== Header scroll state + progress bar =====================
 const siteHeader = document.getElementById('siteHeader');
 const progressBar = document.getElementById('progressBar');
@@ -86,7 +111,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 
 // ===================== Typewriter =====================
-const roles = ['Harita Mühendisi', 'CBS Uzmanı', 'Veri Analisti', 'Python Geliştiricisi'];
+const roles = ['CBS Uzmanı', 'Veri Analisti', 'Python Geliştiricisi', 'Geomatik Mühendisi'];
 const typewriterEl = document.getElementById('typewriter');
 let roleIndex = 0, charIndex = 0, deleting = false;
 
@@ -163,3 +188,34 @@ toTopBtn.addEventListener('click', () => {
 
 // ===================== Footer year =====================
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===================== Count-up stats =====================
+const countEls = document.querySelectorAll('[data-count-to]');
+
+function animateCount(el) {
+  const target = parseFloat(el.getAttribute('data-count-to'));
+  const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+  const suffix = el.getAttribute('data-suffix') || '';
+  const duration = 1400;
+  const start = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = target * eased;
+    el.textContent = value.toFixed(decimals) + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCount(entry.target);
+      countObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+countEls.forEach(el => countObserver.observe(el));
