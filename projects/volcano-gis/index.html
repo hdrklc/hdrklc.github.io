@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volcano GIS — Hıdır Kılıç</title>
+<meta name="description" content="Dünya genelindeki volkanları haritalayan, etki alanı ve risk analizi yapan interaktif CBS uygulaması.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="demo-banner">
+        🟢 Canlı demo — <a href="https://github.com/hdrklc/Volcano-GIS" target="_blank" rel="noopener">kaynak kod</a> ·
+        veri: Smithsonian Global Volcanism Program (public veri seti) ·
+        <a href="../../index.html#projects">← Portföye dön</a>
+    </div>
+
+    <div id="map"></div>
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <h2>🌋 Volcano GIS</h2>
+        </div>
+        <div class="sidebar-content">
+
+            <div class="notice">
+                Bu demoda gösterilen etki yarıçapı/alan değerleri, aktivite durumuna göre
+                hesaplanan <strong>temsili</strong> tahminlerdir; bilimsel ölçüm değildir.
+            </div>
+
+            <div class="filter-section">
+                <h3>Filtreler</h3>
+                <div class="filter-group">
+                    <h4>Aktivite Durumu</h4>
+                    <label><input type="checkbox" id="f-active" checked> Aktif (son 100 yılda patladı)</label>
+                    <label><input type="checkbox" id="f-dormant" checked> Uykuda (bilinen patlama var)</label>
+                    <label><input type="checkbox" id="f-extinct" checked> Sönmüş / bilinmiyor</label>
+                </div>
+                <div class="filter-group">
+                    <h4>İsme Göre Ara</h4>
+                    <input type="text" id="nameSearch" placeholder="Volkan adı...">
+                </div>
+                <div class="filter-group">
+                    <h4>Ülke Filtresi</h4>
+                    <select id="countryFilter">
+                        <option value="">Tüm Ülkeler</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="statistics">
+                <h3>İstatistikler</h3>
+                <div id="statsContent">Yükleniyor...</div>
+            </div>
+
+            <div class="risk-section">
+                <h3>Risk Analizi</h3>
+                <p class="hint">Konumunuzun bir volkanın etki alanında olup olmadığını kontrol edin.</p>
+                <button id="checkMyLocation" class="btn-primary">📍 Konumumu Kontrol Et</button>
+                <div id="riskResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

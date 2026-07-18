@@ -1,0 +1,255 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+.demo-banner {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #1a2332;
+    color: #cbd5e1;
+    font-size: 0.82rem;
+    padding: 0 12px;
+    text-align: center;
+}
+.demo-banner a {
+    color: #5eead4;
+    text-decoration: none;
+}
+.demo-banner a:hover {
+    text-decoration: underline;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.filter-panel {
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.map-container {
+    display: flex;
+    height: calc(100vh - 40px);
+}
+
+#map {
+    flex: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+#info-panel {
+    width: 350px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#info-panel h2 {
+    margin: 0 0 20px 0;
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e74c3c;
+}
+
+.earthquake-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.earthquake-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.earthquake-item h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.earthquake-item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    display: flex;
+    align-items: center;
+}
+
+.earthquake-item p:before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #95a5a6;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.magnitude-high {
+    border-left-color: #e74c3c;
+    background: #fff5f5;
+}
+
+.magnitude-medium {
+    border-left-color: #f39c12;
+    background: #fff9f0;
+}
+
+.magnitude-low {
+    border-left-color: #3498db;
+    background: #f0f9ff;
+}
+
+.new-earthquake {
+    animation: slideIn 0.5s ease-out;
+}
+
+.stats-cards .card {
+    transition: all 0.3s ease;
+}
+
+.stats-cards .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stats-cards .card-title {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.stats-cards .card-text {
+    color: #7f8c8d;
+    margin: 0;
+}
+
+/* Grafik stilleri */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Modal stilleri */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Filtre paneli stilleri */
+.form-label {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 8px 12px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
+}
+
+.btn-primary {
+    background: #3498db;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52,152,219,0.3);
+}
+
+@keyframes slideIn {
+    0% { 
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Leaflet popup stilleri */
+.leaflet-popup-content {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 10px;
+}
+
+.leaflet-popup-content b {
+    color: #2c3e50;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.leaflet-popup-content br {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    .filter-panel {
+        height: auto;
+        max-height: 50vh;
+    }
+
+    .map-container {
+        flex-direction: column;
+        height: 50vh;
+    }
+    
+    #info-panel {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    #map {
+        height: 60vh;
+    }
+
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+} 
