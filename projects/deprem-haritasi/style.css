@@ -24,6 +24,11 @@
 .demo-banner a:hover {
     text-decoration: underline;
 }
+.demo-banner {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .container-fluid {
     padding: 0;
@@ -229,6 +234,15 @@ canvas {
 
 /* Mobil uyumluluk */
 @media (max-width: 768px) {
+    .demo-banner {
+        font-size: 0.74rem;
+        gap: 4px;
+        padding: 0 8px;
+    }
+    .demo-banner .banner-extra {
+        display: none;
+    }
+
     .filter-panel {
         height: auto;
         max-height: 50vh;

@@ -24,6 +24,7 @@ body {
 }
 .demo-banner a { color: #5eead4; text-decoration: none; }
 .demo-banner a:hover { text-decoration: underline; }
+.demo-banner { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 #map {
     position: fixed;
@@ -187,4 +188,6 @@ body {
 @media (max-width: 720px) {
     #sidebar { width: 100%; height: 45vh; top: auto; bottom: 0; }
     #map { width: 100%; top: 40px; bottom: 45vh; }
+    .demo-banner { font-size: 0.74rem; gap: 4px; padding: 0 8px; }
+    .demo-banner .banner-extra { display: none; }
 }
